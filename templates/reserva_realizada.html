@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block conteudo %}
+
+<main class="reserva_realizada_page">
+
+    <div class="mensagem-sucesso">
+        <h1>
+            <span aria-hidden="true">&#10003;</span>
+            Reserva confirmada com sucesso!
+        </h1>
+        <p>A tua reserva do veículo
+           <strong>{{ veiculo.marca }} {{ veiculo.modelo }}</strong>
+           foi registada.</p>
+    </div>
+<div class="confirmacao-layout">
+
+        <div class="confirmacao-fotografia">
+            <img src="{{ url_for('static', filename=veiculo.imagem) }}"
+                 alt="{{ veiculo.marca }} {{ veiculo.modelo }}"
+                 class="confirmacao-imagem">
+        </div>
+
+        <section class="confirmacao-resumo">
+
+        <h2>Resumo da reserva</h2>
+
+        <div class="confirmacao-dados">
+        <p><strong>Data de início:</strong> {{ reserva.data_inicio }}</p>
+        <p><strong>Data de fim:</strong> {{ reserva.data_final }}</p>
+        <p><strong>Total de dias:</strong> {{ reserva.total_dias }}</p>
+        <p><strong>Valor total pago:</strong> {{ reserva.valor_total }}€</p>
+    </div>
+
+    <!-- Voltar à página inicial ou lista de veículos -->
+    <div class="confirmacao-acoes">
+    <a href="{{ url_for('home') }}" class="vehicle-button">
+        Voltar ao início
+    </a>
+    <a href="{{ url_for('veiculos') }}" class="vehicle-button">
+        Ver todos os veículos
+    </a>
+        </div>
+    </section>
+
+    </div>
+
+</div>
+
+{% endblock %}

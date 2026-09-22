@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Veículos - Rodas de Luxo{% endblock %}
+
+{% block conteudo %}
+
+
+    <main class="page-body">
+                    <!-- Card centralizado dentro do hero -->
+                    <div  class = "form-card" >
+                    <h2  class = "form-title" > Crie a sua conta </h2>
+                        {% with mensagens = get_flashed_messages(with_categories=true) %}
+                        {% for categoria, mensagem in mensagens %}
+                        <p class="form-help" role="status">{{ mensagem }}</p>
+                        {% endfor %}
+                        {% endwith %}
+
+     <form action="/register" method="POST" class="form-table" >
+           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+         <div  class="form-row" ><input  type = "text"  name = "nome"  placeholder = "Primeiro Nome" ></div>
+         <div  class="form-row" ><input  type = "text"  name = "apelido"  placeholder = "Último Nome" ></div>
+         <div  class="form-row" ><input  type = "email"  name = "email"  placeholder = " O seu Email" ></div>
+         <div  class="form-row" ><input  type = "password"  name = "password"  placeholder = "Passe" minlength="9" maxlength="128" autocomplete="new-password" required></div>
+         <div  class="form-row" ><input  type = "password"  name = "confirmar_password"  placeholder = "Digite novamente a sua passe" autocomplete="new-password" minlength="9" maxlength="128" required>
+         </div>
+         <div  class="form-row" ><button  type = "submit" > REGISTAR</button></div>
+             <p  class="form-help" >Já tem conta? <a  href = "/login" >Entre aqui</a> </p>
+            </form>
+             </div>
+                
+
+        </main>
+
+{% endblock %}

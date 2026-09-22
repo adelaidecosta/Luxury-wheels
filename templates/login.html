@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Veículos - Rodas de Luxo{% endblock %}
+
+{% block conteudo %}
+
+    <main class="page-body">
+                    <!-- Card centralizado dentro do hero -->
+                    <div  class = "form-card" >
+                    <h2  class = "form-title" >Inicie Sessão Na Sua Conta</h2>
+                        {% with mensagens = get_flashed_messages(with_categories=true) %}
+                        {% for categoria, mensagem in mensagens %}
+                        <p class="form-help" role="status">{{ mensagem }}</p>
+                        {% endfor %}
+                        {% endwith %}
+
+
+        <form action="/login" method="POST" class="form-table" >
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        <div  class="form-row" ><input type="email" name="email" placeholder="Email" autocomplete="username" required>
+        </div>
+        <div  class="form-row" ><input type="password" name="password" placeholder="Password" autocomplete="current-password" required>
+        </div>
+        <div  class="form-row" ><button type="submit">INICIAR SESSÃO</button></div>
+        </form>
+        <p  class="form-help" >Ainda não tens conta? <a href="/register">Regista-te aqui</a></p>
+        </div>
+
+
+        </main>
+{% endblock %}

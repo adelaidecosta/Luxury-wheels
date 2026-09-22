@@ -1,0 +1,26 @@
+
+{% extends "base.html" %}
+{% block conteudo %}
+
+<main class="efetuar_aluguer_page">
+
+    <h1> Alterar Reserva- {{veiculo.marca}} {{veiculo.modelo}} </h1>
+
+   <form method="POST" action="{{ url_for('alteracao_reserva', id_reserva=reserva.id_reserva) }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <label>Data de inicio:</label>
+    <input type="date"  name="data_inicio"
+           value="{{reserva.data_inicio}}"required>
+
+    <label>Data de fim:</label>
+    <input type="date"  name="data_final"
+           value="{{reserva.data_final}}"required>
+
+    <button type="submit">Guardar a alteração</button>
+
+    </form>
+</main>
+
+
+{% endblock %}
+

@@ -1,0 +1,1615 @@
+body {
+     background: white;
+     font-family: Arial, sans-serif;
+     font-size: 16px;
+}
+
+
+/* 1. Alinha o Título e os Links na mesma linha */
+.header-topo {
+    display: flex;         /* Transforma em linha (lado a lado) */
+    align-items: center;   /* Alinha verticalmente pelo meio */
+    gap: 150px;             /* Dá um espaço de 30px entre o título e os links */
+}
+
+/* 2. Estilo do Título principal */
+.logo-texto {
+    margin: 0;
+    color: white;
+    font-size: 32px;       /* Podes ajustar o tamanho aqui */
+}
+
+/* 3. Estilo dos links (antes eram botões) */
+.links-navegacao a {
+    color: white;          /* Cor branca como o título */
+    text-decoration: none; /* Retira o sublinhado azul dos links */
+    font-size: 16px;       /* Tamanho menor que o título */
+    font-weight: 600;     /* Coloca a negrito para destacar */
+
+}
+.links-navegacao {
+     display : flex;     /* necessário para o gap funcionar */
+    gap : 60px ;         /* aumenta para o espaçamento desejado entre os links */
+    align-items : center;
+    left bank : 60px ;
+}
+/* 4. Efeito ao passar o rato (opcional mas recomendado) */
+.links-navegacao a:hover {
+    color: #dddddd;        /* Muda para um cinzento claro ao passar o rato */
+}
+
+/* hero - imagem de fundo e camada escura */
+.hero {
+    background-image: url("testimonial-bg.jpg");/* arquivo dentro de static/ */
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);/* camada escura sobre a imagem */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    padding: 60px 50px;
+}
+/* Card branco centrado */
+.form-card {
+  max-width: 600px;          /* largura do cartão */
+  margin: 30px auto;         /* centra horizontalmente e dá espaço acima */
+  background: #fff;
+  padding: 28px 32px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  color: #222;
+}
+
+/* Título centrado dentro do card */
+.form-title {
+  margin: 0 0 18px;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;        /* centra "Crie a sua conta" */
+  color: #111;
+}
+
+/* "Tabela" de campos — cada .form-row simula uma linha */
+.form-table {
+  display: block;
+}
+
+.form-row {
+  display: block;
+  margin: 10px 0;
+}
+
+/* label acima do input para parecer "linha da tabela" vertical */
+.form-row label {
+  display: block;
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+/* inputs com largura total do card */
+.form-row input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+
+/* botão principal */
+.primary-btn {
+  width: 100%;
+  padding: 12px;
+  background: #111;       /* cor do botão */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.primary-btn:hover { background: #333; }
+
+/* texto de ajuda abaixo do formulário */
+.form-help {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 14px;
+}
+.form-help a { color: #0b7; text-decoration: none; }
+.form-help a:hover { text-decoration: underline; }
+
+/* Responsivo: reduz o card em telas pequenas */
+@media (max-width: 520px) {
+  .form-card { margin: 20px 16px; padding: 20px; }
+  .form-title { font-size: 20px; }
+}
+/* garante área branca sob o herói */
+.page-body {
+   background : #ffffff ;
+   preenchimento : 60px  20px ;    /* espaço em cima e em baixo */
+}
+
+/* centra o cartão dentro da área branca */
+.form-card {
+   max-width : 760px ;
+   margem : 0 automático;        /* centralizado horizontalmente na área branca */
+  background : #fff ;
+   preenchimento : 36px  42px ;
+   raio da borda : 8px ;
+   sombra de caixa : 0  18px  40px  rgba ( 0 , 0 , 0 , 0,12 );
+}
+/* ===== PÁGINA DE VEÍCULOS ===== */
+
+/* Container principal da página de veículos.
+   Ocupa 74% da largura do ecrã, mas nunca passa de 1200px.
+   O "margin: 40px auto" centra o bloco horizontalmente
+   e deixa 40px de espaço em cima e em baixo. */
+
+   .vehicles-page {
+    width: 74%;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+
+/* ── BARRA DE FERRAMENTAS (ordenar + pesquisar) ── */
+
+/* Coloca o "Ordenar por" e a barra de pesquisa lado a lado (flex).
+   "align-items: flex-end" alinha-os pela parte de baixo,
+   para ficarem ao mesmo nível mesmo tendo alturas diferentes.
+   "gap: 30px" é o espaço entre eles.
+   "flex-wrap: wrap" faz com que, em ecrãs pequenos,
+   os elementos passem para a linha seguinte em vez de ficarem espremidos.
+   A linha cinzenta em baixo (border-bottom) separa esta barra dos cartões. */
+.vehicles-tools {
+    display: flex;
+    align-items: flex-end;
+    gap: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eeeeee;
+    flex-wrap: wrap;
+}
+
+/* O texto "Ordenar por :" fica em bloco (ocupa a linha toda)
+   para que o <select> apareça por baixo dele.
+   Tamanho 14px e negrito para destacar. */
+.sort-box label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+
+/* A caixa de seleção (dropdown) de ordenação.
+   Altura fixa de 44px para alinhar com os outros campos.
+   "min-width: 200px" garante que não fica demasiado estreita. */
+.sort-box select {
+    height: 44px;
+    min-width: 200px;
+    padding: 0 12px;
+    border: 1px solid #e5e5e5;
+    font-size: 14px;
+    background: white;
+}
+
+/* A caixa de pesquisa ocupa o espaço que sobra (flex: 1),
+   mas nunca passa de 520px de largura.
+   "display: flex" coloca o input e o botão lado a lado. */
+.search-box {
+    display: flex;
+    flex: 1;
+    max-width: 520px;
+}
+
+
+/* O campo de texto da pesquisa cresce para preencher
+   todo o espaço disponível dentro da .search-box (flex: 1). */
+.search-box input {
+    flex: 1;
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid #e5e5e5;
+    font-size: 14px;
+}
+
+/* Botão "Pesquisar" com fundo cinza da marca.
+   "cursor: pointer" muda o cursor para mão ao passar por cima. */
+.search-box button {
+    height: 44px;
+    padding: 0 22px;
+    background-color: #808080;
+    color: #000;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Quando o rato passa por cima do botão,
+   o cinza fica mais escuro para dar feedback visual. */
+.search-box button:hover {
+    background-color: #555555;
+}
+
+/* ── ÁREA PRINCIPAL (grelha de carros + reserva lateral) ── */
+
+/* Divide o conteúdo em duas colunas:
+   - A primeira (minmax(0, 1fr)) ocupa todo o espaço disponível.
+   - A segunda tem sempre 300px fixos (caixa de reserva).
+   "gap: 30px" é o espaço entre as duas colunas. */
+.vehicles-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* A grelha de cartões de veículos tem 2 colunas iguais (1fr cada).
+   "gap: 28px" é o espaço entre os cartões. */
+.vehicles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+}
+
+
+/* Cada cartão tem uma borda cinzenta subtil.
+   "overflow: hidden" garante que a imagem não ultrapassa
+   os cantos do cartão. */
+.vehicle-card {
+    border: 1px solid #e5e5e5;
+    overflow: hidden;
+    background: white;
+}
+
+/* A imagem ocupa sempre 100% da largura do cartão
+   e tem altura fixa de 210px.
+   "object-fit: cover" corta a imagem para preencher
+   o espaço sem a distorcer (como um zoom centrado).
+   "display: block" remove o espaço extra que as imagens
+   têm por baixo por defeito no HTML. */
+.vehicle-image {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Espaçamento interno da zona de texto do cartão. */
+.vehicle-info {
+    padding: 18px;
+}
+
+/* Preço em cinzento e letra pequena,
+   com 10px de espaço em baixo. */
+.vehicle-price {
+    color: #777;
+    font-size: 13px;
+    margin: 0 0 10px;
+}
+
+
+
+/* Descrição do veículo em cinzento.
+   "line-height: 1.5" aumenta o espaço entre linhas
+   para o texto ficar mais fácil de ler. */
+.vehicle-desc {
+    color: #777;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* Botão "Ver detalhes" — é uma âncora (<a>) estilizada como botão.
+   "display: inline-block" é necessário para que o padding
+   e o margin funcionem corretamente numa âncora.
+   "text-decoration: none" remove o sublinhado do link. */
+.vehicle-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 18px;
+    background-color: #808080;
+    color: black;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+
+/* Escurece o botão ao passar o rato por cima. */
+.vehicle-button:hover {
+    background-color: #555555;
+}
+
+/* ── BOTÕES DA LISTA DE RESERVAS ── */
+.btn-alterar {
+    background-color: #d4af37;   /* dourado */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.btn-cancelar {
+    background-color: #c0392b;   /* vermelho */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.reserva-card {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+}
+/* — Página de Pagamento: caixa do método de pagamento — */
+.select-pagamento {
+    width: 100%;              /* ocupa toda a largura disponível */
+    padding: 12px;            /* espaço interno → caixa maior e legível */
+    font-size: 16px;          /* texto maior, fácil de ler */
+    border: 1px solid #ccc;   /* borda suave */
+    border-radius: 6px;       /* cantos arredondados */
+    margin-top: 6px;
+    margin-bottom: 16px;
+    background-color: #fff;
+    cursor: pointer;
+}
+.select-pagamento label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.select-pagamento .resumo-pagamento {
+    background-color: #f7f7f7;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+/* ===== PÁGINA EFETUAR ALUGUER ===== */
+
+/* Área central, abaixo do cabeçalho, com margens laterais. */
+.efetuar_aluguer_page {
+    width: 88%;
+    max-width: 1000px;
+    margin: 48px auto 80px;
+    color: #222;
+}
+
+.efetuar_aluguer_page,
+.efetuar_aluguer_page * {
+    box-sizing: border-box;
+}
+
+/* Caixa preta centrada, com título dourado. */
+.efetuar_aluguer_page .aluguer-titulo {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 22px 28px;
+    background-color: #111;
+    color: #d8bc80;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 30px;
+    line-height: 1.3;
+}
+
+/* Informação do veículo, alinhada à esquerda
+   dentro de uma área central. */
+.efetuar_aluguer_page .aluguer-veiculo {
+    width: 100%;
+    max-width: 760px;
+    margin: 36px auto 28px;
+    padding: 0 32px;
+    text-align: left;
+}
+
+.efetuar_aluguer_page .aluguer-veiculo h2 {
+    margin: 0 0 12px;
+    font-size: 22px;
+    color: #111;
+}
+
+.efetuar_aluguer_page .aluguer-veiculo p {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+/* Quadro branco das datas:
+   cantos e sombra semelhantes aos de .form-card. */
+.efetuar_aluguer_page .form-aluguer {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 28px 32px;
+
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Cada legenda fica acima do respetivo campo,
+   alinhada à esquerda. */
+.efetuar_aluguer_page .form-aluguer label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #444;
+}
+
+/* Campos com a largura disponível no quadro. */
+.efetuar_aluguer_page .form-aluguer input {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    margin: 0 0 20px;
+    padding: 10px 12px;
+
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+    background-color: #fff;
+    color: #222;
+
+    font-family: inherit;
+    font-size: 15px;
+    text-align: left;
+}
+
+/* Botão semelhante ao .primary-btn existente. */
+.efetuar_aluguer_page .form-aluguer button {
+    width: 100%;
+    margin-top: 8px;
+    padding: 12px;
+
+    background-color: #111;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.efetuar_aluguer_page .form-aluguer button:hover {
+    background-color: #333;
+}
+
+/* Destaque visível ao navegar com o teclado. */
+.efetuar_aluguer_page .form-aluguer input:focus-visible,
+.efetuar_aluguer_page .form-aluguer button:focus-visible {
+    outline: 2px solid #80652e;
+    outline-offset: 3px;
+}
+
+/* Ajustes para telemóveis. */
+@media (max-width: 600px) {
+    .efetuar_aluguer_page {
+        width: 90%;
+        margin: 32px auto 48px;
+    }
+
+    .efetuar_aluguer_page .aluguer-titulo {
+        padding: 18px 20px;
+        font-size: 24px;
+    }
+
+    .efetuar_aluguer_page .aluguer-veiculo {
+        margin-top: 28px;
+        padding: 0 20px;
+    }
+
+    .efetuar_aluguer_page .aluguer-veiculo p {
+        font-size: 22px;
+    }
+
+    .efetuar_aluguer_page .form-aluguer {
+        padding: 24px 20px;
+    }
+
+}
+/* ===== CABEÇALHO: ESPAÇO PARA O NOVO ITEM ===== */
+
+.header-topo {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.links-navegacao {
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.links-navegacao a,
+.links-navegacao .nav-reservas {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.links-navegacao .nav-reservas {
+    color: #c5c5c5;
+    cursor: default;
+}
+
+/* ===== PÁGINA INICIAL ===== */
+
+/* Limita a largura e mantém margens laterais confortáveis. */
+.home-page {
+    width: 88%;
+    max-width: 1200px;
+    margin: 64px auto 80px;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 48px;
+}
+
+.home-page,
+.home-page * {
+    box-sizing: border-box;
+}
+
+/* Quadro do texto: branco, com detalhe dourado. */
+.home-intro {
+    min-width: 0;
+    padding: 36px;
+    background: #ffffff;
+    border: 1px solid #e8e5df;
+    border-left: 4px solid #b99a58;
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.07);
+}
+
+.home-intro p {
+    margin: 0;
+    color: #444444;
+    font-size: 17px;
+    line-height: 1.9;
+}
+
+/* Os dois círculos ficam lado a lado, à direita do texto. */
+.home-stats {
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.home-stat {
+    width: 190px;
+    max-width: 100%;
+    aspect-ratio: 1;
+    flex: 0 1 190px;
+    border-radius: 50%;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    background: linear-gradient(145deg, #292929, #111111);
+    border: 2px solid #b99a58;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+    text-align: center;
+    color: #ffffff;
+
+    /* "both" aplica o estado inicial durante o atraso
+       e mantém o estado final depois da animação. */
+    animation: home-circle-in 0.7s ease-out both;
+}
+
+.home-stat strong {
+    color: #d8bc80;
+    font-size: 30px;
+    line-height: 1.2;
+}
+
+.home-stat span {
+    max-width: 140px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* Primeiro aparece um círculo; depois, o outro. */
+.home-stat:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.home-stat:nth-child(2) {
+    animation-delay: 1s;
+}
+
+@keyframes home-circle-in {
+    from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Em ecrãs menores, os círculos passam para baixo do quadro. */
+@media (max-width: 1000px) {
+    .home-page {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-content {
+        padding: 36px 24px;
+    }
+
+    .links-navegacao {
+        gap: 16px;
+    }
+
+    .home-page {
+        width: 90%;
+        margin: 36px auto 48px;
+    }
+
+    .home-intro {
+        padding: 24px;
+    }
+
+    .home-intro p {
+        font-size: 16px;
+    }
+
+    .home-stat {
+        width: 160px;
+        flex-basis: 160px;
+    }
+
+    .home-stat strong {
+        font-size: 26px;
+    }
+}
+
+/* Respeita a preferência por movimento reduzido. */
+@media (prefers-reduced-motion: reduce) {
+    .home-stat {
+        animation: none;
+    }
+}
+/* ===== LOGÓTIPO, TÍTULO E MENU ===== */
+
+.header-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px 200px;
+}
+
+/* Agrupa o logótipo e o título */
+.marca-site {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.logo-imagem {
+    display: block;
+    width: 82px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.marca-site .logo-texto {
+    margin: 0;
+    color: #ffffff;
+    font-size: 50px;
+}
+
+/* Menu à direita, quando existe espaço */
+.links-navegacao {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-left: auto;
+    max-width: 100%;
+}
+
+.links-navegacao a,
+.links-navegacao .nav-reservas {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.links-navegacao .nav-reservas {
+    cursor: default;
+}
+
+/* Em ecrãs pequenos, o menu passa para baixo da marca */
+@media (max-width: 1100px) {
+    .header-topo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .links-navegacao {
+        justify-content: flex-start;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .marca-site {
+        gap: 12px;
+    }
+
+    .logo-imagem {
+        width: 64px;
+    }
+
+    .marca-site .logo-texto {
+        font-size: 24px;
+    }
+
+    .links-navegacao {
+        gap: 14px;
+    }
+}
+/* ===== RESUMO NA PÁGINA EFETUAR ALUGUER ===== */
+
+/* Quadro alinhado à esquerda da área de conteúdo. */
+.efetuar_aluguer_page .resumo-aluguer {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 420px;
+    margin: 36px auto 0 0;
+    padding: 0 28px 28px;
+
+    background-color: #fff;
+    color: #222;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+}
+
+/* Faixa preta com o título dourado. */
+.efetuar_aluguer_page .resumo-aluguer h2 {
+    margin: 0 -28px 24px;
+    padding: 20px 28px;
+
+    background-color: #111;
+    color: #d8bc80;
+    font-size: 24px;
+    line-height: 1.3;
+    text-align: center;
+}
+
+/* Informação do cálculo. */
+.efetuar_aluguer_page .resumo-aluguer p {
+    margin: 0 0 16px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Altera apenas o botão dentro deste resumo. */
+.efetuar_aluguer_page .resumo-aluguer .vehicle-button {
+    display: block;
+    margin-top: 24px;
+    padding: 14px 18px;
+
+    background-color: #111;
+    color: #d8bc80;
+    border-radius: 6px;
+
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.efetuar_aluguer_page .resumo-aluguer .vehicle-button:hover {
+    background-color: #333;
+}
+
+.efetuar_aluguer_page .resumo-aluguer .vehicle-button:focus-visible {
+    outline: 2px solid #80652e;
+    outline-offset: 3px;
+}
+
+/* Reduz o espaço interno em telemóveis. */
+@media (max-width: 600px) {
+    .efetuar_aluguer_page .resumo-aluguer {
+        padding: 0 20px 24px;
+        margin-top: 28px;
+    }
+
+    .efetuar_aluguer_page .resumo-aluguer h2 {
+        margin: 0 -20px 20px;
+        padding: 18px 20px;
+        font-size: 22px;
+    }
+}
+
+/* ===== PÁGINA DE PAGAMENTO ===== */
+
+/* Título centrado numa caixa preta com letras douradas. */
+.pagamento-page .pagamento-titulo {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 22px 28px;
+
+    background-color: #111;
+    color: #d8bc80;
+    border-radius: 10px;
+
+    text-align: center;
+    font-size: 30px;
+    line-height: 1.3;
+}
+
+/* Informação do veículo alinhada à esquerda. */
+.pagamento-page .pagamento-veiculo {
+    width: 100%;
+    max-width: 760px;
+    margin: 36px auto 28px;
+    padding: 0 32px;
+    text-align: left;
+}
+
+.pagamento-page .pagamento-veiculo h2 {
+    margin: 0 0 12px;
+    font-size: 22px;
+    color: #111;
+}
+
+.pagamento-page .pagamento-veiculo p {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+/* Quadro branco com os valores do pagamento. */
+.pagamento-page .resumo-pagamento {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto 28px;
+    padding: 28px 32px;
+
+    background-color: #fff;
+    color: #222;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.pagamento-page .resumo-pagamento p {
+    margin: 0 0 16px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Destaca a última linha: o valor total. */
+.pagamento-page .resumo-pagamento p:last-child {
+    margin-bottom: 0;
+    padding-top: 16px;
+    border-top: 1px solid #e5e5e5;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Formulário alinhado com o quadro do resumo. */
+.pagamento-page .form-pagamento {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+.pagamento-page .form-pagamento label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #444;
+}
+
+.pagamento-page .form-pagamento .select-pagamento {
+    width: 100%;
+    min-width: 0;
+    margin: 0 0 20px;
+    padding: 12px;
+
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+    background-color: #fff;
+    color: #222;
+
+    font-family: inherit;
+    font-size: 15px;
+}
+
+/* Estilo comum ao botão de pagamento e ao link de regresso. */
+.pagamento-page .form-pagamento button,
+.pagamento-page .form-pagamento .vehicle-button {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 14px 18px;
+
+    background-color: #111;
+    color: #d8bc80;
+    border: none;
+    border-radius: 6px;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Espaço entre os dois botões. */
+.pagamento-page .form-pagamento .vehicle-button {
+    margin-top: 14px;
+}
+
+.pagamento-page .form-pagamento button:hover,
+.pagamento-page .form-pagamento .vehicle-button:hover {
+    background-color: #333;
+}
+
+.pagamento-page .form-pagamento button:focus-visible,
+.pagamento-page .form-pagamento .vehicle-button:focus-visible,
+.pagamento-page .form-pagamento .select-pagamento:focus-visible {
+    outline: 2px solid #80652e;
+    outline-offset: 3px;
+}
+
+/* Ajustes para telemóveis. */
+@media (max-width: 600px) {
+    .pagamento-page .pagamento-titulo {
+        padding: 18px 20px;
+        font-size: 24px;
+    }
+
+    .pagamento-page .pagamento-veiculo {
+        margin-top: 28px;
+        padding: 0 20px;
+    }
+
+    .pagamento-page .pagamento-veiculo p {
+        font-size: 22px;
+    }
+
+    .pagamento-page .resumo-pagamento {
+        padding: 24px 20px;
+    }
+
+    .pagamento-page .form-pagamento {
+        padding: 0 20px;
+    }
+}
+
+/* ===== PÁGINA DA ÚLTIMA RESERVA ===== */
+
+/* Mantém espaço entre o conteúdo e os limites do ecrã. */
+.lista_reservas_page {
+    width: 88%;
+    max-width: 1200px;
+    margin: 48px auto 80px;
+    color: #222;
+}
+
+.lista_reservas_page,
+.lista_reservas_page * {
+    box-sizing: border-box;
+}
+
+/* Duas colunas: informação à esquerda e imagem à direita. */
+.lista_reservas_page .reserva-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    align-items: start;
+    gap: 48px;
+}
+
+.lista_reservas_page .reserva-informacoes,
+.lista_reservas_page .reserva-fotografia {
+    min-width: 0;
+}
+
+/* Caixa preta na coluna esquerda. */
+.lista_reservas_page .lista_reservas-titulo {
+    margin: 0;
+    padding: 22px 28px;
+
+    background-color: #111;
+    color: #d8bc80;
+    border-radius: 10px;
+
+    font-size: 30px;
+    line-height: 1.3;
+    text-align: center;
+}
+
+/* Subtítulo e nome do veículo abaixo do título. */
+.lista_reservas_page .lista_reservas-veiculo {
+    margin: 32px 0 28px;
+    padding: 0 24px;
+    text-align: left;
+}
+
+.lista_reservas_page .lista_reservas-veiculo h2 {
+    margin: 0 0 12px;
+    font-size: 22px;
+    color: #111;
+}
+
+.lista_reservas_page .lista_reservas-veiculo p {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+/* Quadro branco com os dados da reserva. */
+.lista_reservas_page .reserva-dados {
+    padding: 28px 32px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.lista_reservas_page .reserva-dados p {
+    margin: 0 0 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+/* Coloca a legenda acima do respetivo valor. */
+.lista_reservas_page .reserva-dados strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* Separa visualmente o valor pago. */
+.lista_reservas_page .reserva-dados p:last-child {
+    margin-bottom: 0;
+    padding-top: 16px;
+    border-top: 1px solid #e5e5e5;
+}
+
+/* Botões empilhados pela ordem do HTML. */
+.lista_reservas_page .reserva-acoes {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.lista_reservas_page .reserva-acoes form {
+    margin: 0;
+}
+
+/* Mesmo acabamento para os botões e o link Alterar. */
+.lista_reservas_page .reserva-acoes button,
+.lista_reservas_page .reserva-acoes .vehicle-button {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 14px 18px;
+
+    background-color: #111;
+    color: #d8bc80;
+    border: none;
+    border-radius: 6px;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.lista_reservas_page .reserva-acoes button:hover,
+.lista_reservas_page .reserva-acoes .vehicle-button:hover {
+    background-color: #333;
+}
+
+.lista_reservas_page .reserva-acoes button:focus-visible,
+.lista_reservas_page .reserva-acoes .vehicle-button:focus-visible {
+    outline: 2px solid #80652e;
+    outline-offset: 3px;
+}
+
+/* Centra verticalmente a imagem ao lado da coluna esquerda. */
+.lista_reservas_page .reserva-fotografia {
+    align-self: center;
+}
+
+/* Mostra a imagem completa, sem a cortar nem distorcer. */
+.lista_reservas_page .reserva-imagem {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Em ecrãs menores, a imagem passa para baixo. */
+@media (max-width: 1000px) {
+    .lista_reservas_page .reserva-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .lista_reservas_page {
+        width: 90%;
+        margin: 32px auto 48px;
+    }
+
+    .lista_reservas_page .lista_reservas-titulo {
+        padding: 18px 20px;
+        font-size: 24px;
+    }
+
+    .lista_reservas_page .lista_reservas-veiculo {
+        padding: 0 20px;
+    }
+
+    .lista_reservas_page .lista_reservas-veiculo p {
+        font-size: 22px;
+    }
+
+    .lista_reservas_page .reserva-dados {
+        padding: 24px 20px;
+    }
+}
+
+
+/* ===== PÁGINA TODAS AS MINHAS RESERVAS ===== */
+
+/* Coluna centrada na área branca, abaixo do cabeçalho. */
+.minhas_reservas_page {
+    width: 88%;
+    max-width: 760px;
+    margin: 48px auto 80px;
+    color: #222;
+}
+
+.minhas_reservas_page,
+.minhas_reservas_page * {
+    box-sizing: border-box;
+}
+
+/* Caixa preta com título dourado. */
+.minhas_reservas_page .titulo {
+    margin-bottom: 32px;
+}
+
+.minhas_reservas_page .titulo h1 {
+    margin: 0;
+    padding: 22px 28px;
+    background-color: #111;
+    color: #d8bc80;
+    border-radius: 10px;
+    font-size: 30px;
+    line-height: 1.3;
+    text-align: center;
+}
+
+/* Espaço entre as reservas. */
+.minhas_reservas_page .minha-reserva {
+    margin: 0 0 36px;
+}
+
+/* Quadro com o acabamento da página Última Reserva. */
+.minhas_reservas_page .vehicle-card {
+    padding: 28px 32px;
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.minhas_reservas_page .vehicle-card h2 {
+    margin: 0 0 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e5e5e5;
+    color: #111;
+    font-size: 22px;
+    line-height: 1.4;
+}
+
+.minhas_reservas_page .vehicle-card p {
+    margin: 0 0 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+/* Legenda acima do respetivo valor. */
+.minhas_reservas_page .vehicle-card strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* Separação visual antes do estado da reserva. */
+.minhas_reservas_page .vehicle-card p:last-child {
+    margin-bottom: 0;
+    padding-top: 16px;
+    border-top: 1px solid #e5e5e5;
+}
+
+/* Botões fora do quadro, empilhados e alinhados com ele. */
+.minhas_reservas_page .minhas-reservas-acoes {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.minhas_reservas_page .vehicle-button {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 14px 18px;
+    background-color: #111;
+    color: #d8bc80;
+    border: none;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.minhas_reservas_page .vehicle-button:hover {
+    background-color: #333;
+}
+
+.minhas_reservas_page .vehicle-button:focus-visible {
+    outline: 2px solid #80652e;
+    outline-offset: 3px;
+}
+
+.minhas_reservas_page .minhas-reservas-vazio {
+    padding: 24px 0;
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* Ajustes para telemóveis. */
+@media (max-width: 600px) {
+    .minhas_reservas_page {
+        width: 90%;
+        margin: 32px auto 48px;
+    }
+
+    .minhas_reservas_page .titulo h1 {
+        padding: 18px 20px;
+        font-size: 24px;
+    }
+
+    .minhas_reservas_page .vehicle-card {
+        padding: 24px 20px;
+    }
+}
+
+/* ===== PÁGINA RESERVA CONFIRMADA ===== */
+
+.reserva_realizada_page {
+    width: 88%;
+    max-width: 1200px;
+    margin: 48px auto 80px;
+    color: #222;
+}
+
+.reserva_realizada_page,
+.reserva_realizada_page * {
+    box-sizing: border-box;
+}
+
+/* Título e frase de confirmação no topo. */
+.reserva_realizada_page .mensagem-sucesso {
+    max-width: 760px;
+    margin: 0 auto 40px;
+}
+
+.reserva_realizada_page .mensagem-sucesso h1 {
+    margin: 0;
+    padding: 22px 28px;
+    background-color: #111;
+    color: #d8bc80;
+    border-radius: 10px;
+    font-size: 26px;
+    line-height: 1.4;
+    text-align: center;
+}
+
+/* Símbolo dourado, sem o fundo verde do emoji. */
+.reserva_realizada_page .mensagem-sucesso h1 span {
+    color: #d8bc80;
+    margin-right: 8px;
+}
+
+/* Quadro exclusivo da frase de confirmação. */
+.reserva_realizada_page .mensagem-sucesso p {
+    margin: 24px 0 0;
+    padding: 24px 28px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    font-size: 17px;
+    line-height: 1.6;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+/* Imagem à esquerda e resumo à direita. */
+.reserva_realizada_page .confirmacao-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 48px;
+}
+
+.reserva_realizada_page .confirmacao-fotografia,
+.reserva_realizada_page .confirmacao-resumo {
+    min-width: 0;
+}
+
+.reserva_realizada_page .confirmacao-fotografia {
+    align-self: center;
+}
+
+/* Mostra a imagem completa, sem cortes nem distorção. */
+.reserva_realizada_page .confirmacao-imagem {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Caixa preta do título do resumo. */
+.reserva_realizada_page .confirmacao-resumo h2 {
+    margin: 0 0 24px;
+    padding: 22px 28px;
+    background-color: #111;
+    color: #d8bc80;
+    border-radius: 10px;
+    font-size: 24px;
+    line-height: 1.3;
+    text-align: center;
+}
+
+/* Quadro branco dos dados, como nas páginas anteriores. */
+.reserva_realizada_page .confirmacao-dados {
+    padding: 28px 32px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.reserva_realizada_page .confirmacao-dados p {
+    margin: 0 0 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.reserva_realizada_page .confirmacao-dados strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.reserva_realizada_page .confirmacao-dados p:last-child {
+    margin-bottom: 0;
+    padding-top: 16px;
+    border-top: 1px solid #e5e5e5;
+}
+
+/* Botões abaixo do quadro dos dados. */
+.reserva_realizada_page .confirmacao-acoes {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.reserva_realizada_page .confirmacao-acoes .vehicle-button {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 14px 18px;
+    background-color: #111;
+    color: #d8bc80;
+    border: none;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+    text-decoration: none;
+}
+
+.reserva_realizada_page .confirmacao-acoes .vehicle-button:hover {
+    background-color: #333;
+}
+
+.reserva_realizada_page .confirmacao-acoes .vehicle-button:focus-visible {
+    outline: 2px solid #80652e;
+    outline-offset: 3px;
+}
+
+/* Em ecrãs pequenos, a imagem fica acima do resumo. */
+@media (max-width: 900px) {
+    .reserva_realizada_page .confirmacao-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .reserva_realizada_page {
+        width: 90%;
+        margin: 32px auto 48px;
+    }
+
+    .reserva_realizada_page .mensagem-sucesso h1 {
+        padding: 18px 20px;
+        font-size: 22px;
+    }
+
+    .reserva_realizada_page .mensagem-sucesso p {
+        padding: 24px 20px;
+        font-size: 16px;
+    }
+
+    .reserva_realizada_page .confirmacao-resumo h2 {
+        padding: 18px 20px;
+        font-size: 22px;
+    }
+
+    .reserva_realizada_page .confirmacao-dados {
+        padding: 24px 20px;
+    }
+}
+/* ===== RODAPÉ EXCLUSIVO DA PÁGINA INICIAL ===== */
+
+/* Remove a margem exterior do navegador apenas na página inicial,
+   permitindo que a faixa preta chegue aos limites do ecrã. */
+body:has(.home-contactos) {
+    margin: 0;
+}
+
+.home-contactos {
+    width: 100%;
+    padding: 36px 0;
+    background-color: #000;
+    color: #d8bc80;
+}
+
+.home-contactos,
+.home-contactos * {
+    box-sizing: border-box;
+}
+
+/* Contactos alinhados à esquerda, com uma margem confortável. */
+.home-contactos-conteudo {
+    width: 88%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+/* Título ligeiramente maior do que os contactos. */
+.home-contactos h2 {
+    margin: 0 0 22px;
+    color: #d8bc80;
+    font-size: 24px;
+    line-height: 1.3;
+}
+
+.home-contactos p {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0 0 16px;
+    color: #d8bc80;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.home-contactos p:last-child {
+    margin-bottom: 0;
+}
+
+/* Mantém os símbolos alinhados numa coluna. */
+.home-contactos i {
+    width: 22px;
+    flex-shrink: 0;
+    color: #d8bc80;
+    font-size: 18px;
+    text-align: center;
+}
+
+.home-contactos span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+/* Ajustes para telemóveis. */
+@media (max-width: 600px) {
+    .home-contactos {
+        padding: 28px 0;
+    }
+
+    .home-contactos-conteudo {
+        width: 90%;
+    }
+
+    .home-contactos h2 {
+        font-size: 22px;
+    }
+}
