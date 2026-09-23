@@ -796,8 +796,7 @@ def minhas_reservas():
 # add_all() prepara a inserção de vários registos.
 # commit() guarda as alterações na base de dados.
 # print() apresenta uma mensagem na consola.
-if __name__=='__main__':
-    with app.app_context():
+with app.app_context():
         db.create_all() # Cria as tabelas se não existirem
 
         # Verifica se a tabela está vazia antes de inserir para não duplicar
@@ -833,5 +832,6 @@ if __name__=='__main__':
     # debug=True ativa a depuração e, por defeito, o recarregamento automático
     # quando são detetadas alterações nos ficheiros de código.
     # Este modo destina-se ao desenvolvimento e não deve ser usado em produção.
+if __name__=='__main__':
     app.run(debug=True)  # O debug=True faz com que cada vez que reiniciemos o
     # servidor ou modifiquemos o código, o servidor de Flask reinicia-se sozinho
