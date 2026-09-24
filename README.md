@@ -11,10 +11,10 @@ Loja de aluguer de veículos online, desenvolvida em Python com Flask.
 1. Clonar o repositório:
  ```bash
 git clone https://github.com/adelaidecosta/Luxury-wheels.git
-cd Rodas de luxo ´´´
+cd Luxury-wheels
 pip install -r requirements.txt
 python app.py
-
+```
 
 
 
