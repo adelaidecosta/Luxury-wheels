@@ -1,4 +1,4 @@
-# Luxury Wheels
+# Luxury-Wheels
 
 Loja de aluguer de veículos online, desenvolvida em Python com Flask.
 
