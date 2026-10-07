@@ -26,7 +26,6 @@
                     </div>
                 <nav class ="links-navegacao" >
                     <a href="/"> INÍCIO </a>
-
                     <a href="{{ url_for('veiculos') }}"> VEÍCULOS </a>
 
                     {% if session.get("id_cliente") %}
@@ -36,14 +35,6 @@
                     <a href="{{ url_for('login') }}"> INICIAR SESSÃO </a>
                     <a href="{{ url_for('register') }}"> REGISTAR</a>
                     {% endif %}
-
-
-           <a href="/login"> INICIAR SESSÃO </a>
-                    <a href="/register"> REGISTAR</a>
-                    <a href="/veiculos"> VEÍCULOS </a>
-                      <a href="{{ url_for('minhas_reservas') }}">
-                         MINHAS RESERVAS
-                      </a>
 
                 </nav>
             </div>
