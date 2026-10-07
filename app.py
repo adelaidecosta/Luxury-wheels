@@ -784,10 +784,12 @@ def logout():
 
         session.clear()
         flash("Sessão terminada. Até Breve!")
-        return redirect(url_for("index"))
+        return redirect(url_for("home"))
 
 
-
+# Garante que as tabelas existem também quando a app é iniciada pelo gunicorn.
+with app.app_context():
+    db.create_all()
 
 # Este bloco só é executado quando o ficheiro é iniciado diretamente,
 # e não quando é importado por outro ficheiro Python.
@@ -805,12 +807,9 @@ def logout():
 # add_all() prepara a inserção de vários registos.
 # commit() guarda as alterações na base de dados.
 # print() apresenta uma mensagem na consola.
-<<<<<<< HEAD
+
 if __name__=='__main__':
     with app.app_context():
-=======
-with app.app_context():
->>>>>>> cd5ffbdd4dc7c52b4f71e8cdec81b3303fd7fdff
         db.create_all() # Cria as tabelas se não existirem
 
         # Verifica se a tabela está vazia antes de inserir para não duplicar
@@ -846,9 +845,8 @@ with app.app_context():
     # debug=True ativa a depuração e, por defeito, o recarregamento automático
     # quando são detetadas alterações nos ficheiros de código.
     # Este modo destina-se ao desenvolvimento e não deve ser usado em produção.
-<<<<<<< HEAD
-=======
-if __name__=='__main__':
->>>>>>> cd5ffbdd4dc7c52b4f71e8cdec81b3303fd7fdff
+
+
+
     app.run(debug=True)  # O debug=True faz com que cada vez que reiniciemos o
     # servidor ou modifiquemos o código, o servidor de Flask reinicia-se sozinho
