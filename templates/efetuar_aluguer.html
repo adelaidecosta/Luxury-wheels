@@ -1,0 +1,46 @@
+
+{% extends "base.html" %}
+{% block conteudo %}
+
+<main class="efetuar_aluguer_page">
+
+    <h1 class="aluguer-titulo"> Efetuar Aluguer </h1>
+
+    <section class="aluguer-veiculo">
+        <h2>Veículo:</h2>
+        <p>{{veiculo.marca}} {{veiculo.modelo}}</p>
+
+    </section>
+    <form method="POST"
+          action="{{url_for('efetuar_aluguer', veiculo_id=veiculo.id)}}"
+         class="form-aluguer">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+    <label for="data_inicio">Data de inicio:</label>
+    <input type="date" id="data_inicio" name="data_inicio" required>
+
+    <label for="data_final">Data de fim:</label>
+    <input type="date" id="data_final" name="data_final" required>
+
+    <button type="submit">Calcular valor</button>
+
+    </form>
+
+<!-- Só aparece DEPOIS de haver um cálculo -->
+{% if valor_total %}
+<div class= "resumo-aluguer">
+    <h2>Resumo</h2>
+    <p>Total de dias: <strong>{{ total_dias }}</strong></p>
+    <p>Valor total a pagar: <strong> {{ valor_total}}€ </strong></p>
+<!-- Seguir com botão para o pagamento -->
+    <a href="{{url_for('pagamento', veiculo_id= veiculo.id)}}"
+    class="vehicle-button">Continuar para o pagamento</a>
+    <a href="/veiculos" class="vehicle-button">
+    Voltar aos veículos
+</a>
+
+</div>
+{% endif %}
+</main>
+{% endblock %}
+

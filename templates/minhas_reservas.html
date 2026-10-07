@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<div class="minhas_reservas_page">
+
+    <div class="titulo">
+        <h1>Todas as minhas reservas:</h1>
+    </div>
+
+    {% if reservas %}
+
+        {% for reserva in reservas %}
+            <article class="vehicle-card">
+
+                <h2>Reserva n.º {{ reserva.id_reserva }}</h2>
+
+                <p>
+                    <strong>Data de início:</strong>
+                    {{ reserva.data_inicio.strftime('%d/%m/%Y') }}
+                </p>
+
+                <p>
+                    <strong>Data de fim:</strong>
+                    {{ reserva.data_final.strftime('%d/%m/%Y') }}
+                </p>
+
+                <p>
+                    <strong>Total de dias:</strong>
+                    {{ reserva.total_dias }}
+                </p>
+
+                <p>
+                    <strong>Valor total da reserva:</strong>
+                    {% if reserva.valor_total is not none %}
+                        {{ "%.2f"|format(reserva.valor_total)|replace('.', ',') }} €
+                    {% else %}
+                        Não disponível
+                    {% endif %}
+                </p>
+
+                <p>
+                    <strong>Estado:</strong>
+                    {% if reserva.cancelada %}
+                        Cancelada
+                    {% elif reserva.realizada %}
+                        Confirmada
+                    {% else %}
+                        Por confirmar
+                    {% endif %}
+                </p>
+                </article>
+                <div class="minhas-reservas-acoes">
+                <a href="{{ url_for('lista_reservas', id_reserva=reserva.id_reserva) }}"
+                   class="vehicle-button">
+                    Ver detalhes da reserva
+                </a>
+            </div>
+        </section>
+        {% endfor %}
+
+    {% else %}
+
+    <div class="minhas-reservas-vazio">
+        <p>Ainda não tens reservas.</p>
+        <p>Consulta os veículos disponíveis para fazeres o teu primeiro aluguer.</p>
+    </div>
+    {% endif %}
+
+    <div class="minhas-reservas-acoes">
+        <a href="{{ url_for('home') }}" class="vehicle-button">
+            Voltar ao início
+        </a>
+
+        <a href="{{ url_for('veiculos') }}" class="vehicle-button">
+            Ver todos os veículos
+        </a>
+
+    </div>
+</div>
+
+{% endblock %}

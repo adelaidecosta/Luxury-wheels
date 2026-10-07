@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Veículos - Rodas de Luxo{% endblock %}
+
+{% block conteudo %}
+
+<main  class = "vehicles-page">
+
+    <!--BARRA DE FERRAMENTAS: ORDENAR + PESQUISAR -->
+
+    <!-- Barra de pesquisa e ordenação -->
+    <section class="vehicles-tools">
+        <!-- Caixa de ordenação -->
+        <div class="sort-box">
+            <label for="ordenar"> Ordenar por:</label>
+            <select id="ordenar">
+                <option>Marca</option>
+                <option>Modelo</option>
+                <option>Ano</option>
+            </select>
+        </div>
+
+        <!-- Formulário de pesquisa -->
+        <!-- method="GET" envia o texto escrito para o servidor via URL -->
+        <!-- action aponta para a rota lista_veiculos no app.py -->
+        <form  class = "search-box"  method = "GET"  action = "{{ url_for('veiculos') }}">
+        <input
+            type="text"
+            name="pesquisa"
+            placeholder="Pesquise o que deseja..."
+            value="{{ pesquisa or '' }}"
+        >
+
+            <button type="submit">Pesquisar</button>
+        </form>
+
+    </section> <!-- Fim da barra de ferramentas -->
+
+        <!-- CONTÉUDO PRINCIPAL: GRELHA + RESERVA  -->
+
+        <main class="vehicles-content">
+
+            <!-- Grelha de cartões de veículos -->
+            <div  class = "vehicles-grid">
+
+
+            <!-- O Jinja2 percorre todos os veiculos da base de dados -->
+            {% for v in veiculos %}
+
+                <!-- Cada cartão é um <article> — elemento semântico para conteúdo independente -->
+                <article class="vehicle-card">
+
+                    <!-- Imagem do veículo carregada da pasta static/ -->
+                    <img
+                        src="{{ url_for('static', filename=v.imagem) }}"
+                        alt="{{v.marca }} {{ v.modelo }}"
+                        class="vehicle-image"
+                    >
+                    <!-- Informações do veículo -->
+                    <!-- "v" é a variável usada no loop de veículos" -->
+                    <div class="vehicle-info">
+                        <h2>{{ v.marca }} {{ v.modelo }} ({{ v.ano }})</h2>
+                        <p class="vehicle-price">A Partir De 20€ Por Dia</p>
+                        <p class="vehicle-desc">Veículo selecionado pela Luxury Wheels.</p>
+                        <a  href = "{{url_for('detalhes', veiculo_id=v.id)}}"  class = "vehicle-button" > Ver detalhes </a>
+                        <a  href = "{{url_for('efetuar_aluguer', veiculo_id= v.id)}}" class = "vehicle-button"> Alugar </a>
+                    </div>
+
+                </article>
+
+            {% else %}
+                <!-- Aparece apenas se a lista "veículos" estiver vazia -->
+                <p class="no-vehicles">Não foram encontrados veículos.</p>
+                {% endfor %}
+
+        </div>
+        </main>
+{% endblock %}
+
+
+
+
+
+

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Início - Rodas de Luxo{% endblock %}
+
+{% block conteudo %}
+
+<main  class = "home-page" >
+
+    <section  class ="home-intro" aria-label="Sobre a Luxury Wheels" >
+        <p>
+            A Luxury Wheels é uma empresa especializada em aluguel de carros e não só,
+            que oferece uma vasta oferta de veículos, e que está atento sempre às
+            necessidades dos nossos clientes. Criada em 2025, tem vindo a ser reconhecida
+            como uma empresa de prestígio valor a nível nacional.
+        </p>
+</section>
+    <!-- Círculos de apresentação, à direita -->
+    <div class="home-stats" role="group" aria-label="Luxury Wheels em números">
+
+        <div class="home-stat">
+            <strong>+ de 3500</strong>
+            <span>carros</span>
+        </div>
+
+        <div class="home-stat">
+            <strong>5284</strong>
+            <span>clientes satisfeitos</span>
+        </div>
+
+    </div>
+
+
+</main>
+
+<footer class="home-contactos" aria-labelledby="contactos-titulo">
+    <div class="home-contactos-conteudo">
+
+        <h2 id="contactos-titulo">Contactos:</h2>
+
+        <p>
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            <span>Braga</span>
+        </p>
+
+        <p>
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+            <span>Luxurywheels@gmail.com</span>
+        </p>
+
+        <p>
+            <i class="fas fa-phone" aria-hidden="true"></i>
+            <span>+351 333333333</span>
+        </p>
+
+    </div>
+</footer>
+{% endblock %}

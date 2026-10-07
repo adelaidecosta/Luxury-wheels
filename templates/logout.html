@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+    <main class="page-body">
+        <!-- Card centralizado dentro do hero -->
+                    <div  class = "form-card" >
+                    <h2  class = "form-title" >Sair</h2>
+                        {% with mensagens = get_flashed_messages(with_categories=true) %}
+                    <section>
+                        <p> Estamos ansiosos pela sua próxima visita!</p>
+                    </section>
+                    </div>
+
+    </main>
+
+{% endblock %}
+{% endwith %}

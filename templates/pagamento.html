@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block conteudo %}
+
+<main class="efetuar_aluguer_page pagamento-page">
+    <h1 class="pagamento-titulo"> Pagamento </h1>
+
+     <section class="pagamento-veiculo">
+     <h2>Veículo:</h2>
+     <p>{{veiculo.marca}} {{veiculo.modelo}}</p>
+    </section>
+    <!--Resumo do valor a pagar-->
+
+    <div class="resumo-pagamento">
+    <p> Total de dias: <strong>{{total_dias}}</strong> </p>
+        <p>Valor líquido(sem IVA): <strong>{{ "%.2f"|format(valor_liquido)}}€</strong></p>
+        <p>IVA(23%): <strong>{{ "%.2f"|format(valor_iva)}}€</strong></p>
+        <p>Valor total a pagar: <strong>{{ "%.2f"|format(valor_total)}}€</strong></p>
+    </div>
+
+    <!--Escolha da forma de pagamento-->
+    <form class="form-pagamento"
+          method ="POST"
+          action="{{url_for('pagamento', veiculo_id=veiculo.id)}}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        <label for="id_forma_pagamento">Método de Pagamento:</label>
+        <select id="id_forma_pagamento"
+                name="id_forma_pagamento"
+                class="select-pagamento"
+                required>
+            {% for forma in formas %}
+            <option value="{{forma.id}}">{{forma.tipo}}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Pagar e concluir</button>
+
+        <a href="/veiculos" class="vehicle-button">
+    Voltar aos veículos
+</a>
+    </form>
+</main>
+{% endblock %}
