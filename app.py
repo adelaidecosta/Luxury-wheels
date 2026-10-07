@@ -778,15 +778,15 @@ def minhas_reservas():
         "minhas_reservas.html",
         reservas=reservas
     )
-<<<<<<< HEAD
+
 @app.route("/logout")
 def logout():
 
         session.clear()
         flash("Sessão terminada. Até Breve!")
         return redirect(url_for("index"))
-=======
->>>>>>> cd5ffbdd4dc7c52b4f71e8cdec81b3303fd7fdff
+
+
 
 
 # Este bloco só é executado quando o ficheiro é iniciado diretamente,

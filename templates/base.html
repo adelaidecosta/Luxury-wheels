@@ -52,11 +52,11 @@
 {% if request.endpoint not in ['register', 'login'] %}
     {% with mensagens = get_flashed_messages(with_categories=true) %}
         {% for categoria, mensagem in mensagens %}
-<<<<<<< HEAD
+
             <p class="form-help {{ categoria }}" role="status">{{ mensagem }}</p>
-=======
+
             <p class="form-help" role="status">{{ mensagem }}</p>
->>>>>>> cd5ffbdd4dc7c52b4f71e8cdec81b3303fd7fdff
+
         {% endfor %}
     {% endwith %}
 {% endif %}
